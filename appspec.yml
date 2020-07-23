@@ -3,3 +3,9 @@ os: linux
 files:
   - source: /
     destination: /var/www/html/mysite
+permissions:
+  - object: /var/www
+    owner: "nginx"
+    group: "nginx"
+
+    
