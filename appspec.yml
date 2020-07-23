@@ -2,13 +2,16 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /var/www/html/mysite
+    destination: /var/www/
 permissions:
   - object: /var/www
     owner: "nginx"
     group: "nginx"
-
-AfterInstall:
+hooks:
+  BeforeInstall:
+    - location: scripts/cleanup.sh
+      timeout: 120
+  AfterInstall:
     - location: scripts/migrate.sh
       timeout: 180
   ApplicationStart:
