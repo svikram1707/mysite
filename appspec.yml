@@ -8,4 +8,10 @@ permissions:
     owner: "nginx"
     group: "nginx"
 
-    
+AfterInstall:
+    - location: scripts/migrate.sh
+      timeout: 180
+  ApplicationStart:
+    - location: scripts/restart-server.sh
+      timeout: 120
+      runas: root
